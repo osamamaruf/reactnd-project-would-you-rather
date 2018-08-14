@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { formatQuestion } from '../utils/helpers'
-import { Panel, Image, Col, Row } from 'react-bootstrap'
+import { Panel, Image, Media } from 'react-bootstrap'
 
 class Question extends Component{
     render() {            
@@ -14,23 +14,17 @@ class Question extends Component{
                         </Panel.Title>
                     </Panel.Heading>
                     <Panel.Body>    
-                    <Row className="show-grid">
-                            <Col xs={6} md={4}>
-                            <Image src={question.avatar} thumbnail responsive/>                            
-                            </Col>
-                            <Col xs={12} md={8}>
-                                <h4>Would you rather</h4>
-                                <div>
-                                    {question.optionOneText}
-                                </div>
-                                <div>
-                                    or
-                                </div>
-                                <div>
-                                    {question.optionTwoText}
-                                </div>                                
-                            </Col>
-                        </Row>                          
+                        <Media>
+                            <Media.Left align="middle">
+                                <Image width={64} height={64} src={question.avatar} alt="avatar"/>
+                            </Media.Left>
+                            <Media.Body>
+                                    <Media.Heading>Would You Rather?</Media.Heading>
+                                    <div>{question.optionOneText}</div>
+                                    <div>or</div>
+                                    <div>{question.optionTwoText}</div>
+                            </Media.Body>
+                        </Media>                                            
                     </Panel.Body>
                 </Panel>            
         )
