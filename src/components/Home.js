@@ -18,6 +18,6 @@ function mapStateToProps({ questions }){
       questionIds: Object.keys(questions)
         .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
     }
-  }
+}
 
 export default connect(mapStateToProps)(Home)
