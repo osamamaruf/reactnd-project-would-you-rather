@@ -6,17 +6,13 @@ class Home extends Component{
     render() {
         const { questionIds } = this.props;
         return(
-            <div>
-                <ul>
-                    {
-                        questionIds.map((questionId) => (
-                            <li key={questionId}>
-                                <Question id={questionId} />
-                            </li>
-                        ))
+            <div className="container">                
+                {
+                    questionIds.map((questionId) => (                            
+                        <Question key={questionId} id={questionId} />                            
+                    ))
 
-                    }
-                </ul>
+                }                                         
             </div>
         )
     }
