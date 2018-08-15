@@ -3,11 +3,13 @@ import { connect } from 'react-redux'
 import { formatQuestion } from '../utils/helpers'
 import { Panel, Image, Media } from 'react-bootstrap'
 import { formatDate } from '../utils/helpers'
+import { Link } from 'react-router-dom'
 
 class Question extends Component{
     render() {            
         const { question } = this.props        
-        return(                                 
+        return( 
+            <Link to={`/question/${question.id}`}>
                 <Panel>
                     <Panel.Heading>
                         <Panel.Title>
@@ -29,6 +31,7 @@ class Question extends Component{
                         </Media>                                            
                     </Panel.Body>
                 </Panel>            
+            </Link>
         )
     }
 }

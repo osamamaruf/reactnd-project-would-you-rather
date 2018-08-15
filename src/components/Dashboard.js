@@ -4,6 +4,7 @@ import Toolbar from './Toolbar'
 import Home from './Home'
 import NewPoll from './NewPoll'
 import LeaderBoard from './LeaderBoard'
+import QuestionDetail from './QuestionDetail'
 
 class Dashboard extends Component{
     render() {        
@@ -15,6 +16,7 @@ class Dashboard extends Component{
                         <Route path='/' exact component={Home}/>
                         <Route path='/add' exact component={NewPoll}/>
                         <Route path='/leaderboard' exact component={LeaderBoard}/>
+                        <Route path='/question/:id' exact component={QuestionDetail}/>
                     </div>
                 </Fragment>
             </Router>
