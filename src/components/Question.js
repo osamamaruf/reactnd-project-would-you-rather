@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { formatQuestion } from '../utils/helpers'
 import { Panel, Image, Media } from 'react-bootstrap'
+import { formatDate } from '../utils/helpers'
 
 class Question extends Component{
     render() {            
@@ -9,8 +10,9 @@ class Question extends Component{
         return(                                 
                 <Panel>
                     <Panel.Heading>
-                        <Panel.Title componentClass="h3">
-                            {question.name} says
+                        <Panel.Title>
+                            <h4>{question.name} says</h4>
+                            <h5>{formatDate(question.timestamp)}</h5>
                         </Panel.Title>
                     </Panel.Heading>
                     <Panel.Body>    
