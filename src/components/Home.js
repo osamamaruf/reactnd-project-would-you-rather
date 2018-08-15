@@ -6,17 +6,15 @@ import { Tabs, Tab } from 'react-bootstrap'
 class Home extends Component{
     render() {
         const { questionIds, questions, authedUser } = this.props;
-        return(                                              
-                <div className="container">                    
-                    <Tabs defaultActiveKey={1}>
-                        <Tab eventKey={1} title="Unanswered Questions">
-                            <QuestionList questionIds={questionIds.filter(id => !questions[id].optionOne.votes.concat(questions[id].optionTwo.votes).includes(authedUser))}/>                                   
-                        </Tab>
-                        <Tab eventKey={2} title="Answered Questions">
-                            <QuestionList questionIds={questionIds.filter(id => questions[id].optionOne.votes.concat(questions[id].optionTwo.votes).includes(authedUser))}/>                                   
-                        </Tab>                        
-                    </Tabs>                  
-                </div>            
+        return(                                                                                
+            <Tabs defaultActiveKey={1}>
+                <Tab eventKey={1} title="Unanswered Questions">
+                    <QuestionList questionIds={questionIds.filter(id => !questions[id].optionOne.votes.concat(questions[id].optionTwo.votes).includes(authedUser))}/>                                   
+                </Tab>
+                <Tab eventKey={2} title="Answered Questions">
+                    <QuestionList questionIds={questionIds.filter(id => questions[id].optionOne.votes.concat(questions[id].optionTwo.votes).includes(authedUser))}/>                                   
+                </Tab>                        
+            </Tabs>                                     
         )
     }
 }
