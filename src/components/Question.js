@@ -16,7 +16,7 @@ class Question extends Component{
                     <Panel.Body>    
                         <Media>
                             <Media.Left align="middle">
-                                <Image width={64} height={64} src={question.avatar} alt="avatar"/>
+                                <Image width={64} height={64} src={question.avatar} circle alt="avatar"/>
                             </Media.Left>
                             <Media.Body>
                                     <Media.Heading>Would You Rather?</Media.Heading>
