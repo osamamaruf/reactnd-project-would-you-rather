@@ -7,26 +7,27 @@ import { Link } from 'react-router-dom'
 
 class Question extends Component{
     render() {            
-        const { question } = this.props        
+        const { question } = this.props
+        const { id, name, timestamp, avatar, optionOneText, optionTwoText } = question
         return( 
-            <Link to={`/question/${question.id}`}>
+            <Link to={`/question/${id}`}>
                 <Panel>
                     <Panel.Heading>
                         <Panel.Title>
-                            <h4>{question.name} says</h4>
-                            <h5>{formatDate(question.timestamp)}</h5>
+                            <h4>{name} says</h4>
+                            <h5>{formatDate(timestamp)}</h5>
                         </Panel.Title>
                     </Panel.Heading>
                     <Panel.Body>    
                         <Media>
                             <Media.Left align="middle">
-                                <Image width={64} height={64} src={question.avatar} circle alt="avatar"/>
+                                <Image width={64} height={64} src={avatar} circle alt="avatar"/>
                             </Media.Left>
                             <Media.Body>
                                     <Media.Heading>Would You Rather?</Media.Heading>
-                                    <div>{question.optionOneText}</div>
+                                    <div>{optionOneText}</div>
                                     <div>or</div>
-                                    <div>{question.optionTwoText}</div>
+                                    <div>{optionTwoText}</div>
                             </Media.Body>
                         </Media>                                            
                     </Panel.Body>
