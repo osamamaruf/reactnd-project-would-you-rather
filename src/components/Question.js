@@ -14,7 +14,7 @@ class Question extends Component{
                 <Panel>
                     <Panel.Heading>
                         <Panel.Title>
-                            <h4>{name} says</h4>
+                            <h4>{name} asks : </h4>
                             <h5>{formatDate(timestamp)}</h5>
                         </Panel.Title>
                     </Panel.Heading>
