@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { formatQuestion } from '../utils/helpers'
-import { Panel, Image, Media } from 'react-bootstrap'
+import { Card, Button, CardHeader, CardBody, Media } from 'reactstrap'
 import { formatDate } from '../utils/helpers'
 import { Link } from 'react-router-dom'
 
@@ -11,27 +11,28 @@ class Question extends Component{
         const { id, name, timestamp, avatar, optionOneText, optionTwoText } = question
         return( 
             <Link to={`/question/${id}`}>
-                <Panel>
-                    <Panel.Heading>
-                        <Panel.Title>
+                <Card>
+                    <CardHeader>
                             <h4>{name} asks : </h4>
                             <h5>{formatDate(timestamp)}</h5>
-                        </Panel.Title>
-                    </Panel.Heading>
-                    <Panel.Body>    
+                    </CardHeader>                                        
+                    <CardBody>
                         <Media>
-                            <Media.Left align="middle">
-                                <Image width={64} height={64} src={avatar} circle alt="avatar"/>
-                            </Media.Left>
-                            <Media.Body>
-                                    <Media.Heading>Would You Rather?</Media.Heading>
-                                    <div>{optionOneText}</div>
-                                    <div>or</div>
-                                    <div>{optionTwoText}</div>
-                            </Media.Body>
-                        </Media>                                            
-                    </Panel.Body>
-                </Panel>            
+                            <Media left top>
+                                <Media object src={avatar} height={64} width={64} alt="avatar" className="rounded-circle"/>
+                            </Media>
+                            <Media body>
+                            <Media heading>
+                                Would You Rather?
+                            </Media>                        
+                                <div>{optionOneText}</div>
+                                <div>or</div>
+                                <div>{optionTwoText}</div> 
+                            </Media>
+                        </Media>                                                
+                        <Button>View Poll</Button>
+                    </CardBody>                                        
+                </Card>            
             </Link>
         )
     }

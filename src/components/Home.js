@@ -1,20 +1,56 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import QuestionList from './QuestionList'
-import { Tabs, Tab } from 'react-bootstrap'
+import { TabContent, TabPane, Nav, NavItem, NavLink } from 'reactstrap';
+import classnames from 'classnames'
 
 class Home extends Component{
+    constructor(props) {
+        super(props);
+    
+        this.toggle = this.toggle.bind(this);
+        this.state = {
+          activeTab: '1'
+        };
+      }
+    
+      toggle(tab) {
+        if (this.state.activeTab !== tab) {
+          this.setState({
+            activeTab: tab
+          });
+        }
+      }
+
     render() {
         const { questionIds, questions, authedUser } = this.props;
-        return(                                                                                
-            <Tabs id="home" defaultActiveKey={1}>
-                <Tab id="unanswered" eventKey={1} title="Unanswered Questions">
-                    <QuestionList id="ql-unanswered" questionIds={questionIds.filter(id => !questions[id].optionOne.votes.concat(questions[id].optionTwo.votes).includes(authedUser))}/>                                   
-                </Tab>
-                <Tab id="answered" eventKey={2} title="Answered Questions">
-                    <QuestionList id="ql-answered" questionIds={questionIds.filter(id => questions[id].optionOne.votes.concat(questions[id].optionTwo.votes).includes(authedUser))}/>                                   
-                </Tab>                        
-            </Tabs>                                     
+        return(                                                                                                    
+            <div>
+                <Nav tabs>
+                    <NavItem>
+                        <NavLink                        
+                        className={classnames({ active: this.state.activeTab === '1' })}
+                        onClick={() => { this.toggle('1'); }}>
+                        Unanswered Questions
+                        </NavLink>
+                    </NavItem>
+                    <NavItem>
+                        <NavLink                        
+                        className={classnames({ active: this.state.activeTab === '2' })}
+                        onClick={() => { this.toggle('2'); }}>
+                        Answered Questions
+                        </NavLink>
+                    </NavItem>
+                </Nav>
+                <TabContent activeTab={this.state.activeTab}>
+                    <TabPane tabId="1">
+                        <QuestionList id="ql-unanswered" questionIds={questionIds.filter(id => !questions[id].optionOne.votes.concat(questions[id].optionTwo.votes).includes(authedUser))}/>                                   
+                    </TabPane>
+                    <TabPane tabId="2">
+                        <QuestionList id="ql-answered" questionIds={questionIds.filter(id => questions[id].optionOne.votes.concat(questions[id].optionTwo.votes).includes(authedUser))}/>                                       
+                    </TabPane>
+                </TabContent>
+            </div>
         )
     }
 }

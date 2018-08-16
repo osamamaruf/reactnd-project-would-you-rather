@@ -1,33 +1,46 @@
 import React, { Component } from 'react'
-import { Navbar, Nav, NavItem } from 'react-bootstrap'
+import { Navbar, Nav, NavItem, NavbarBrand, NavbarToggler, NavLink, Collapse } from 'reactstrap'
 
 class Toolbar extends Component{
+    constructor(props) {
+        super(props);
+    
+        this.toggle = this.toggle.bind(this);
+        this.state = {
+          isOpen: false
+        };
+    }
+      
+    toggle() {
+        this.setState({
+          isOpen: !this.state.isOpen
+        });
+    }
+
     render() {        
-        return(            
-            <Navbar>
-                <Navbar.Header>
-                    <Navbar.Brand>
-                        <a href="/">Would You Rather?</a>
-                    </Navbar.Brand>
-                    <Navbar.Toggle />
-                </Navbar.Header>     
-                <Nav>
-                    <NavItem eventKey={1} href="/">
-                    Home
-                    </NavItem>
-                    <NavItem eventKey={2} href="/add">
-                    New Question
-                    </NavItem>    
-                    <NavItem eventKey={2} href="/leaderboard">
-                    Leader Board
-                    </NavItem>  
-                </Nav>  
-                <Nav pullRight>
-                    <NavItem eventKey={1} href="/logout">
-                        Logout
-                    </NavItem>                    
-                </Nav>         
-            </Navbar>
+        return(
+            <Navbar color="light" light expand="md">
+                <NavbarBrand href="/" className="mr-auto">Would You Rather?</NavbarBrand>
+                <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />  
+                    <Collapse isOpen={this.state.isOpen} navbar>              
+                        <Nav navbar className="mr-auto">
+                        <NavItem>
+                            <NavLink href="/">Home</NavLink>
+                        </NavItem>
+                        <NavItem>
+                            <NavLink href="/add">New Question</NavLink>                    
+                        </NavItem>    
+                        <NavItem>
+                            <NavLink href="/leaderboard">Leader Board</NavLink>
+                        </NavItem>                                           
+                        </Nav>
+                        <Nav navbar>
+                            <NavItem>
+                                <NavLink href="/logout">Logout</NavLink>
+                            </NavItem>   
+                        </Nav>                
+                    </Collapse>
+            </Navbar>                        
         )
     }
 }
