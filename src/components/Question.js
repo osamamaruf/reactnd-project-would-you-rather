@@ -33,9 +33,9 @@ class Question extends Component{
                                 <div>{optionOneText}</div>
                                 <div>or</div>
                                 <div>{optionTwoText}</div> 
+                                <Button onClick={(e) => this.toDetail(e, id)}>View Poll</Button>
                             </Media>
-                        </Media>                                                
-                        <Button onClick={(e) => this.toDetail(e, id)}>View Poll</Button>
+                        </Media>                                                                        
                     </CardBody>                                        
             </Card>                        
         )
