@@ -14,9 +14,9 @@ class Dashboard extends Component{
                     <Toolbar />                             
                     <div className="container">
                         <Route path='/' exact component={Home}/>
-                        <Route path='/add' exact component={NewPoll}/>
-                        <Route path='/leaderboard' exact component={LeaderBoard}/>
-                        <Route path='/question/:id' exact component={QuestionDetail}/>
+                        <Route path='/question/:id' component={QuestionDetail}/>
+                        <Route path='/add' component={NewPoll}/>
+                        <Route path='/leaderboard' component={LeaderBoard}/>                        
                     </div>
                 </Fragment>
             </Router>
