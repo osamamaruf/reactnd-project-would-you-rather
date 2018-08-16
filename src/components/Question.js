@@ -3,15 +3,20 @@ import { connect } from 'react-redux'
 import { formatQuestion } from '../utils/helpers'
 import { Card, Button, CardHeader, CardBody, Media } from 'reactstrap'
 import { formatDate } from '../utils/helpers'
-import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 class Question extends Component{
+
+    toDetail = (e, id) => {
+        e.preventDefault();
+        this.props.history.push(`/question/${id}`)
+    }
+
     render() {            
         const { question } = this.props
         const { id, name, timestamp, avatar, optionOneText, optionTwoText } = question
-        return( 
-            <Link to={`/question/${id}`}>
-                <Card>
+        return(             
+            <Card>
                     <CardHeader>
                             <h4>{name} asks : </h4>
                             <h5>{formatDate(timestamp)}</h5>
@@ -30,10 +35,9 @@ class Question extends Component{
                                 <div>{optionTwoText}</div> 
                             </Media>
                         </Media>                                                
-                        <Button>View Poll</Button>
+                        <Button onClick={(e) => this.toDetail(e, id)}>View Poll</Button>
                     </CardBody>                                        
-                </Card>            
-            </Link>
+            </Card>                        
         )
     }
 }
@@ -48,4 +52,4 @@ function mapStateToProps({authedUser, users, questions}, {id}) {
 }
 
 
-export default connect(mapStateToProps)(Question)
+export default withRouter(connect(mapStateToProps)(Question))
