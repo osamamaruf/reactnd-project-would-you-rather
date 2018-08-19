@@ -13,7 +13,7 @@ class AnsweredPoll extends Component {
   }
 
   render () {
-    const { question, authedUser, users } = this.props
+    const { question, users } = this.props
     const { optionOneText, optionTwoText, id, optionOneAnswered } = question
     return (
       <div>        
@@ -44,9 +44,8 @@ class AnsweredPoll extends Component {
   }
 }
 
-function mapStateToProps({authedUser, users}, ownProps) {      
-    return {
-      authedUser,
+function mapStateToProps({ users }, ownProps) {      
+    return {      
       question : ownProps.question,
       users
     }
