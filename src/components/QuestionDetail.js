@@ -1,10 +1,14 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { formatQuestion } from '../utils/helpers'
-import { Card, Button, CardHeader, CardBody, Media } from 'reactstrap'
+import { Card, Button, CardHeader, CardBody, Media, Label, Input, Form, FormGroup } from 'reactstrap'
 import { formatDate } from '../utils/helpers'
 
 class QuestionDetail extends Component {
+
+  handleAnswer= (e, id) => {
+
+  }
 
   render() {            
     const { question } = this.props
@@ -17,27 +21,37 @@ class QuestionDetail extends Component {
           </CardHeader>                                        
           <CardBody>
               <Media>
-                  <Media left middle>
+                  <Media left top>
                     <Media object src={avatar} height={64} width={64} alt="avatar" className="rounded-circle"/>
                   </Media>
                   <Media body>
-                  <Media heading>
-                      Would You Rather?
-                  </Media>                        
-                      <div>{optionOneText}</div>
-                      <div>or</div>
-                      <div>{optionTwoText}</div> 
+                    <Form>     
+                        <FormGroup tag="fieldset">
+                            <legend>Would You Rather?</legend>
+                            <FormGroup check>
+                                <Label check>
+                                <Input type="radio" name="vote" />{' '}
+                                {optionOneText}
+                                </Label>
+                            </FormGroup>
+                            <FormGroup check>
+                                <Label check>
+                                <Input type="radio" name="vote" />{' '}
+                                {optionTwoText}
+                                </Label>
+                            </FormGroup>                            
+                        </FormGroup>                  
+                        <Button onClick={(e) => this.handleAnswer(e, id)}>Submit</Button>
+                    </Form>                                                                                                                                             
                   </Media>
-              </Media>                                                
-              <Button>View Poll</Button>
+              </Media>                                                              
           </CardBody>                                        
       </Card>            
     )
 }
 }
 
-function mapStateToProps({authedUser, users, questions}, ownProps) {
-  console.log(ownProps)
+function mapStateToProps({authedUser, users, questions}, ownProps) {  
   const question = questions[ownProps.match.params.id]
   return {
     authedUser,
