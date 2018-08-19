@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Navbar, Nav, NavItem, NavbarBrand, NavbarToggler, NavLink, Collapse } from 'reactstrap'
+import { connect } from 'react-redux'
+import { Navbar, Nav, NavItem, NavbarBrand, NavbarToggler, NavLink, Collapse, Media } from 'reactstrap'
 
 class Toolbar extends Component{
     constructor(props) {
@@ -18,6 +19,7 @@ class Toolbar extends Component{
     }
 
     render() {        
+        const { authedUser, avatar } = this.props        
         return(
             <Navbar color="light" light expand="md">
                 <NavbarBrand href="/" className="mr-auto">Would You Rather?</NavbarBrand>
@@ -36,6 +38,12 @@ class Toolbar extends Component{
                         </Nav>
                         <Nav navbar>
                             <NavItem>
+                                <NavLink disabled>
+                                    <Media object src={avatar} height={32} width={32} alt="avatar" className="rounded-circle"/>
+                                    { authedUser }
+                                </NavLink>
+                            </NavItem>   
+                            <NavItem>
                                 <NavLink href="/logout">Logout</NavLink>
                             </NavItem>   
                         </Nav>                
@@ -45,4 +53,11 @@ class Toolbar extends Component{
     }
 }
 
-export default Toolbar
+function mapStateToProps({ authedUser, users }) {      
+    return {
+      authedUser,
+      avatar: users[authedUser].avatarURL      
+    }
+}
+  
+  export default connect(mapStateToProps)(Toolbar);
