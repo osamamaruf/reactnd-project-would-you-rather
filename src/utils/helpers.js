@@ -15,6 +15,9 @@ export function formatQuestion (question, author, authedUser) {
       optionOneText: optionOne.text,
       optionTwoText: optionTwo.text,
       hasAnswered: optionOne.votes.concat(optionTwo.votes).includes(authedUser),
+      totalVotesCount: optionOne.votes.concat(optionTwo.votes).length,
+      optionOne,
+      optionTwo,
       avatar: avatarURL      
     }
 }
