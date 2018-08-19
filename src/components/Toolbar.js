@@ -21,7 +21,7 @@ class Toolbar extends Component{
         return(
             <Navbar color="light" light expand="md">
                 <NavbarBrand href="/" className="mr-auto">Would You Rather?</NavbarBrand>
-                <NavbarToggler onClick={this.toggleNavbar} className="mr-2" />  
+                <NavbarToggler onClick={this.toggle} className="mr-2" />  
                     <Collapse isOpen={this.state.isOpen} navbar>              
                         <Nav navbar className="mr-auto">
                         <NavItem>
