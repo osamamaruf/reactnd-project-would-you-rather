@@ -46,7 +46,7 @@ class UnAnsweredPoll extends Component {
                 </FormGroup>                            
             </FormGroup>                  
             <Button onClick={(e) => this.handleAnswer(e)}>Submit</Button>
-    </Form>
+        </Form>
     );
   }
 }
