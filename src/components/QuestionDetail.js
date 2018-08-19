@@ -14,8 +14,13 @@ class QuestionDetail extends Component {
     return(         
           <Card>
           <CardHeader>
-                  <h4>{name} asks : </h4>
-                  <h5>{formatDate(timestamp)}</h5>
+                  {   hasAnswered ? 
+                        <h5>Asked by {name}</h5>:
+                        <div>
+                          <h4>{name} asks : </h4>
+                          <h5>{formatDate(timestamp)}</h5>
+                        </div>
+                  }    
           </CardHeader>                                        
           <CardBody>
               <Media>
