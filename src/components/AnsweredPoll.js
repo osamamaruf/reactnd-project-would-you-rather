@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import { Progress, Col, Row } from 'reactstrap'
+import { Progress, Card, CardText, CardTitle, Badge } from 'reactstrap'
 
 class AnsweredPoll extends Component {
 
@@ -14,20 +14,32 @@ class AnsweredPoll extends Component {
 
   render () {
     const { question, authedUser, users } = this.props
-    const { optionOneText, optionTwoText, id } = question
+    const { optionOneText, optionTwoText, id, optionOneAnswered } = question
     return (
-      <Col>
-        <div className="text-center">{ optionOneText }</div>
-        <Progress striped color="info" value={this.answerPercentage(id, optionOneText)} max="100">
-            {this.answerPercentage(id, 'optionOne')}
-        </Progress>
-        <div className="text-center">{question.optionOne.votes.length} out of {Object.keys(users).length}</div>
-        <div className="text-center">{ optionTwoText }</div>
-        <Progress striped color="info" value={this.answerPercentage(id, optionTwoText)} max="100">
-            {this.answerPercentage(id, 'optionTwo')}
-        </Progress>               
-        <div className="text-center">{question.optionTwo.votes.length} out of {Object.keys(users).length}</div>
-      </Col>
+      <div>        
+        <div>Results : </div>
+          <Card body className="text-left">
+            <CardTitle>
+              { optionOneText } 
+              { optionOneAnswered && <Badge className="float-right" color="success" pill>Your Answer!</Badge> }
+            </CardTitle>
+            <Progress striped color="info" value={this.answerPercentage(id, optionOneText)} max="100">
+                {this.answerPercentage(id, optionOneText)}
+            </Progress>
+            <CardText className="text-center">{question.optionOne.votes.length} out of {Object.keys(users).length}</CardText>        
+          </Card>
+        
+          <Card body className="text-left">
+            <CardTitle>
+              { optionTwoText }
+              { !optionOneAnswered && <Badge className="float-right" color="success" pill>Your Answer!</Badge> }
+            </CardTitle>
+            <Progress striped color="info" value={this.answerPercentage(id, optionTwoText)} max="100">
+                {this.answerPercentage(id, optionTwoText)}
+            </Progress>
+            <CardText className="text-center">{question.optionTwo.votes.length} out of {Object.keys(users).length}</CardText>        
+          </Card>                        
+      </div>
     );
   }
 }
