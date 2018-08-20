@@ -16,7 +16,7 @@ class Question extends Component{
         const { question } = this.props
         const { id, name, timestamp, avatar, optionOneText, optionTwoText } = question
         return(             
-            <Card>
+            <Card className="mt-4">
                     <CardHeader>
                             <h4>{name} asks : </h4>
                             <h5>{formatDate(timestamp)}</h5>
