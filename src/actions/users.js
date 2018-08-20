@@ -9,7 +9,7 @@ export function receiveUsers (users) {
 }
 
 
-export function SaveUserQuestion ({user, qid}) {
+export function saveUserQuestion ({user, qid}) {
     return {
         type : SAVE_USER_QUESTION,        
         user,

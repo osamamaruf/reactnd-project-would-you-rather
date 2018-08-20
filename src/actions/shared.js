@@ -1,6 +1,6 @@
 import { getInitialData } from '../utils/api'
 import {  _saveQuestion, _saveQuestionAnswer } from '../utils/_DATA'
-import { receiveUsers, SaveUserQuestion } from '../actions/users'
+import { receiveUsers, saveUserQuestion } from '../actions/users'
 import { receiveQuestions, saveQuestion,saveQuestionAnswer } from '../actions/questions'
 import { setAuthedUser } from '../actions/authedUser'
 import { showLoading, hideLoading } from 'react-redux-loading'
@@ -34,7 +34,7 @@ export function handleSaveQuestion (options) {
             optionTwoText
         }).then((question) => {
                 dispatch(saveQuestion(question))
-                dispatch(SaveUserQuestion({ user: authedUser, qid: question.id}))
+                dispatch(saveUserQuestion({ user: authedUser, qid: question.id}))
             })            
           .then(() => dispatch(hideLoading()))            
 
