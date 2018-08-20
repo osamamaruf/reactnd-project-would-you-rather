@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
-import  { handleSaveQuestion }  from '../actions/questions'
+import  { handleSaveQuestion }  from '../actions/shared'
 import { Button, Label, Input, Form, FormGroup, Card, CardHeader, CardBody, CardTitle, CardSubtitle } from 'reactstrap'
 
 class NewPoll extends Component {
