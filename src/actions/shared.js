@@ -1,6 +1,6 @@
 import { getInitialData } from '../utils/api'
 import {  _saveQuestion, _saveQuestionAnswer } from '../utils/_DATA'
-import { receiveUsers, saveUserQuestion } from '../actions/users'
+import { receiveUsers, saveUserQuestion, saveUserAnswer } from '../actions/users'
 import { receiveQuestions, saveQuestion,saveQuestionAnswer } from '../actions/questions'
 import { setAuthedUser } from '../actions/authedUser'
 import { showLoading, hideLoading } from 'react-redux-loading'
@@ -44,11 +44,13 @@ export function handleSaveQuestion (options) {
 export function handleSaveQuestionAnswer (info) {
     return (dispatch) => {
         dispatch(saveQuestionAnswer(info))
+        dispatch(saveUserAnswer(info))
 
         return _saveQuestionAnswer(info)
             .catch((e) => {
                 console.warn('Error in handleSaveQuestionAnser: ', e)
                 dispatch(saveQuestionAnswer(info))
+                dispatch(saveUserAnswer(info))
                 alert('There was an error while saving the Answer. Try again.')
             })
 
