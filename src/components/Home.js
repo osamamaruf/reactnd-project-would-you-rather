@@ -26,7 +26,7 @@ class Home extends Component{
         const { questionIds, questions, authedUser } = this.props;
         return(                                                                                                    
             <div>
-                <Nav tabs>
+                <Nav tabs justified className="mt-4">
                     <NavItem>
                         <NavLink                        
                         className={classnames({ active: this.state.activeTab === '1' })}
