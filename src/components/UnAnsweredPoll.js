@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Button, Label, Input, Form, FormGroup } from 'reactstrap'
-import { handleSaveQuestionAnswer } from '../actions/questions'
+import { handleSaveQuestionAnswer } from '../actions/shared'
 
 class UnAnsweredPoll extends Component {
   state = {
