@@ -44,7 +44,7 @@ class NewPoll extends Component {
 
     return (
 
-      <Card>
+      <Card className="mt-4">
         <CardHeader>                  
           <h4 className="text-center">Create New Question</h4>
         </CardHeader>                                        
