@@ -12,7 +12,7 @@ class QuestionDetail extends Component {
     const { question } = this.props
     const { name, timestamp, avatar, hasAnswered } = question
     return(         
-          <Card>
+          <Card className="mt-4">
           <CardHeader>
                   {   hasAnswered ? 
                         <h5>Asked by {name}</h5>:

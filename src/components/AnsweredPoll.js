@@ -18,7 +18,7 @@ class AnsweredPoll extends Component {
     return (
       <div>        
         <div>Results : </div>
-          <Card body className="text-left">
+          <Card body className="text-left mt-4">
             <CardTitle>
               { optionOneText } 
               { optionOneAnswered && <Badge className="float-right" color="success" pill>Your Answer!</Badge> }
@@ -29,7 +29,7 @@ class AnsweredPoll extends Component {
             <CardText className="text-center">{question.optionOne.votes.length} out of {Object.keys(users).length}</CardText>        
           </Card>
         
-          <Card body className="text-left">
+          <Card body className="text-left mt-4">
             <CardTitle>
               { optionTwoText }
               { !optionOneAnswered && <Badge className="float-right" color="success" pill>Your Answer!</Badge> }
