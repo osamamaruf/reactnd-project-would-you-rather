@@ -38,7 +38,7 @@ function QuestionDetail (props) {
 }
 
 function mapStateToProps({authedUser, users, questions}, ownProps) {  
-  const question = questions[ownProps.match.params.id]
+  const question = questions[ownProps.match.params.question_id]
   return {
     authedUser,
     question : formatQuestion(question, users[question.author], authedUser)

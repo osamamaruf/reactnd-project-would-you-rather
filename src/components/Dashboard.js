@@ -9,11 +9,11 @@ function Dashboard (){
     return(                                                                   
         <Fragment>                
             <Route path='/' exact component={Home}/>
-            <Route path='/question/:id' component={QuestionDetail}/>
+            <Route path='/question/:question_id' component={QuestionDetail}/>
             <Route path='/add' component={NewPoll}/>
             <Route path='/leaderboard' component={LeaderBoard}/>                    
         </Fragment>                    
-    )
+    );
 }
 
 export default Dashboard
