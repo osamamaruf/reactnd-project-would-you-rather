@@ -1,23 +1,21 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
 import ScoreCard from './ScoreCard'
 
-class LeaderBoard extends Component {
+function LeaderBoard (props) {
+  const { users, userIds } = props
+  return (
+    <div>
+      {
+          userIds.map((userId) => (                            
+            <ScoreCard key={userId} user={users[userId]} />                            
+          ))        
 
-  render() {
-    const { users, userIds } = this.props
-    return (
-      <div>
-        {
-            userIds.map((userId) => (                            
-              <ScoreCard key={userId} user={users[userId]} />                            
-            ))        
-
-        }          
-      </div>
-    );
-  }
+      }          
+    </div>
+  );
 }
+
 
 function mapStateToProps({ users }) {  
 
