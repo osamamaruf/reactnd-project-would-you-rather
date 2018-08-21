@@ -22,6 +22,10 @@ class LandingPage extends Component {
     this.setState({value: event.target.value});
   }
 
+  isDisabled = () => {
+    return this.state.value===''
+  }
+
   render() {    
     const { users } = this.props
     return (
@@ -42,7 +46,7 @@ class LandingPage extends Component {
                       }                                                                      
                 </Input>                              
               </FormGroup>
-              <Button onClick={(e) => this.handleSubmit(e) }>Submit</Button>
+              <Button disabled={this.isDisabled()} onClick={(e) => this.handleSubmit(e) }>Submit</Button>
             </Form>
         </CardBody>
       </Card>      
