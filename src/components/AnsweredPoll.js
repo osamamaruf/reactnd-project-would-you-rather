@@ -13,7 +13,7 @@ class AnsweredPoll extends Component {
 
   render () {
     const { question } = this.props
-    const { optionOneText, optionTwoText, id, optionOneAnswered, totalVotesCount } = question
+    const { optionOneText, optionTwoText, optionOneAnswered, totalVotesCount } = question
     return (
       <div>        
         <div>Results : </div>
