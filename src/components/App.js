@@ -24,8 +24,7 @@ class App extends Component {
               <Switch>                  
                 {this.props.loading === true
                   ? <Route path='/' exact component={LandingPage}/>                                          
-                  : <Dashboard />
-                    
+                  : <Dashboard />                    
                 }
                 <Route component={PageNotFound}/>
               </Switch>           
