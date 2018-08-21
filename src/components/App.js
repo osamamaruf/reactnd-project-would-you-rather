@@ -22,7 +22,7 @@ class App extends Component {
           <Toolbar />  
             <div className="container"> 
               <Switch>                  
-                {this.props.loading === true
+                {this.props.notLoggedIn === true
                   ? <Route path='/' exact component={LandingPage}/>                                          
                   : <Dashboard />                    
                 }
@@ -37,7 +37,7 @@ class App extends Component {
 
 function mapStateToProps ({ authedUser }) {
   return {
-    loading: authedUser === null
+    notLoggedIn: authedUser === null
   }
 }
 
