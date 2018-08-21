@@ -1,10 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Card, Media } from 'reactstrap'
 
-class ScoreCard extends Component {
-
-  render() {
-    const { user } = this.props
+function ScoreCard (props) {
+    const { user } = props
     const { name, avatarURL, questions, answers } = user
     
     return (
@@ -23,8 +21,7 @@ class ScoreCard extends Component {
                     </Media>
                 </Media>                                                                                                        
         </Card>                        
-    );
-  }
+    )
 }
 
 export default ScoreCard;
