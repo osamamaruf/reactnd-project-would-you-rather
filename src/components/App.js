@@ -21,14 +21,18 @@ class App extends Component {
           <LoadingBar/>  
           <Toolbar />  
             <div className="container"> 
-              <Switch>                  
-                {this.props.notLoggedIn === true
-                  ? <Route path='/' exact component={LandingPage}/>                                          
-                  : <Dashboard />                    
-                }
-                <Route component={PageNotFound}/>
-              </Switch>           
-             </div>
+              <div className="row justify-content-center">
+                <div className="col-6">
+                  <Switch>                  
+                    {this.props.notLoggedIn === true
+                      ? <Route path='/' exact component={LandingPage}/>                                          
+                      : <Dashboard />                    
+                    }
+                    <Route component={PageNotFound}/>
+                  </Switch>           
+                </div>
+              </div>
+            </div>
         </Fragment>
       </Router>
     );
