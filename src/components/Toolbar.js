@@ -45,17 +45,19 @@ class Toolbar extends Component{
                             <NavLink tag= { Link } to="/leaderboard">Leader Board</NavLink>
                         </NavItem>                                           
                         </Nav>
-                        <Nav navbar>
-                            <NavItem>
-                                <NavLink disabled>
-                                    <Media object src={avatar} height={32} width={32} alt="avatar" className="rounded-circle"/>
-                                    { authedUser }
-                                </NavLink>
-                            </NavItem>   
-                            <NavItem>
-                                <NavLink onClick={ (e) => {this.logout(e)} }>Logout</NavLink>
-                            </NavItem>   
-                        </Nav>                
+                        { authedUser &&
+                            <Nav navbar>
+                                <NavItem>
+                                    <NavLink disabled>
+                                        <Media object src={avatar} height={32} width={32} alt="avatar" className="rounded-circle"/>
+                                        { authedUser }
+                                    </NavLink>
+                                </NavItem>   
+                                <NavItem>
+                                    <NavLink onClick={ (e) => {this.logout(e)} }>Logout</NavLink>
+                                </NavItem>   
+                            </Nav>                
+                        }
                     </Collapse>
             </Navbar>                        
         )
@@ -65,7 +67,7 @@ class Toolbar extends Component{
 function mapStateToProps({ authedUser, users }) {      
     return {
       authedUser,
-      avatar: users[authedUser].avatarURL      
+      avatar: authedUser ? users[authedUser].avatarURL : null      
     }
 }
   
