@@ -42,6 +42,10 @@ class NewPoll extends Component {
     })
   }
 
+  isDisabled = () => {
+    return this.state.optionOneText==='' || this.state.optionTwoText===''
+  }
+
   render() {
     const { optionOneText, optionTwoText, toHome } = this.state
 
@@ -68,7 +72,7 @@ class NewPoll extends Component {
               <FormGroup>          
                 <Input type="text" id="optionTwoText" onChange={ (e) => {this.handleChange(e, 'optionTwoText')}} value={ optionTwoText } placeholder="Enter option two text here." />
               </FormGroup>
-              <Button onClick={(e) => this.handleSubmit(e) }>Submit</Button>
+              <Button disabled={ this.isDisabled() } onClick={(e) => this.handleSubmit(e) }>Submit</Button>
             </Form>
         </CardBody>
       </Card>      
