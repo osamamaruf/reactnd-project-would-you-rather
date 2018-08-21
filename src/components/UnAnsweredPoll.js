@@ -25,6 +25,10 @@ class UnAnsweredPoll extends Component {
     this.setState({answer: value});
   }
 
+  isDisabled = () => {
+    return this.state.answer===''
+  }
+
   render() {    
     const { question } = this.props
     const { optionOneText, optionTwoText } = question
@@ -45,7 +49,7 @@ class UnAnsweredPoll extends Component {
                     </Label>
                 </FormGroup>                            
             </FormGroup>                  
-            <Button onClick={(e) => this.handleAnswer(e)}>Submit</Button>
+            <Button disabled={ this.isDisabled() } onClick={(e) => this.handleAnswer(e)}>Submit</Button>
         </Form>
     );
   }
