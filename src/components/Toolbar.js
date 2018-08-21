@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Navbar, Nav, NavItem, NavbarBrand, NavbarToggler, NavLink, Collapse, Media } from 'reactstrap'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import { setAuthedUser } from '../actions/authedUser'
 
 class Toolbar extends Component{
@@ -22,9 +22,9 @@ class Toolbar extends Component{
 
     logout(e){
         e.preventDefault()
-        const { dispatch } = this.props
+        const { dispatch, history } = this.props
         dispatch(setAuthedUser(null))
-
+        history.push('/')
     }
 
     render() {        
@@ -53,7 +53,7 @@ class Toolbar extends Component{
                                 </NavLink>
                             </NavItem>   
                             <NavItem>
-                                <NavLink tag= { Link } to="/" onClick={ (e) => {this.logout(e)} }>Logout</NavLink>
+                                <NavLink onClick={ (e) => {this.logout(e)} }>Logout</NavLink>
                             </NavItem>   
                         </Nav>                
                     </Collapse>
@@ -69,4 +69,4 @@ function mapStateToProps({ authedUser, users }) {
     }
 }
   
-export default connect(mapStateToProps)(Toolbar);
+export default withRouter(connect(mapStateToProps)(Toolbar));
