@@ -25,7 +25,7 @@ class App extends Component {
                 <div className="col-6">
                   <Switch>                  
                     {this.props.notLoggedIn === true
-                      ? <Route path='/' exact component={LandingPage}/>                                          
+                      ? <Route path='/' component={LandingPage}/>                                          
                       : <Dashboard />                    
                     }
                     <Route component={PageNotFound}/>
