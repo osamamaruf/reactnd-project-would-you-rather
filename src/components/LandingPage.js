@@ -30,8 +30,8 @@ class LandingPage extends Component {
           <h4 className="text-center">Would you rather...</h4>
         </CardHeader>                                        
         <CardBody>            
-            <CardSubtitle>Please sign in below to play</CardSubtitle>            
-            <Form>                            
+            <CardSubtitle className="text-center">Please sign in below to play</CardSubtitle>            
+            <Form className="text-center">                            
               <FormGroup>    
                 <Label for="userSelect">Sign in</Label>      
                 <Input type="select" id="userSelect" value={ this.state.value } onChange={ (e) => { this.handleChange(e)}}>
