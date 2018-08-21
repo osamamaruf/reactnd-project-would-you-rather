@@ -23,12 +23,9 @@ class App extends Component {
             <div className="container"> 
               <Switch>                  
                 {this.props.loading === true
-                  ? <Fragment>                    
-                        <Route path='/' exact component={LandingPage}/>                      
-                    </Fragment>
-                  : <Fragment>                      
-                      <Dashboard />
-                    </Fragment>                        
+                  ? <Route path='/' exact component={LandingPage}/>                                          
+                  : <Dashboard />
+                    
                 }
                 <Route component={PageNotFound}/>
               </Switch>           
