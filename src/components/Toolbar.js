@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Navbar, Nav, NavItem, NavbarBrand, NavbarToggler, NavLink, Collapse, Media } from 'reactstrap'
+import { Link } from 'react-router-dom'
 import { setAuthedUser } from '../actions/authedUser'
 
 class Toolbar extends Component{
@@ -30,18 +31,18 @@ class Toolbar extends Component{
         const { authedUser, avatar } = this.props        
         return(
             <Navbar color="light" light expand="md">
-                <NavbarBrand href="/" className="mr-auto">Would You Rather?</NavbarBrand>
+                <NavbarBrand tag= { Link } to="/" className="mr-auto">Would You Rather?</NavbarBrand>
                 <NavbarToggler onClick={this.toggle} className="mr-2" />  
                     <Collapse isOpen={this.state.isOpen} navbar>              
                         <Nav navbar className="mr-auto">
                         <NavItem>
-                            <NavLink href="/">Home</NavLink>
+                            <NavLink  tag= { Link } to="/">Home</NavLink>
                         </NavItem>
                         <NavItem>
-                            <NavLink href="/add">New Question</NavLink>                    
+                            <NavLink tag= { Link } to="/add">New Question</NavLink>                    
                         </NavItem>    
                         <NavItem>
-                            <NavLink href="/leaderboard">Leader Board</NavLink>
+                            <NavLink tag= { Link } to="/leaderboard">Leader Board</NavLink>
                         </NavItem>                                           
                         </Nav>
                         <Nav navbar>
@@ -52,7 +53,7 @@ class Toolbar extends Component{
                                 </NavLink>
                             </NavItem>   
                             <NavItem>
-                                <NavLink href="/" onClick={ (e) => {this.logout(e)} }>Logout</NavLink>
+                                <NavLink tag= { Link } to="/" onClick={ (e) => {this.logout(e)} }>Logout</NavLink>
                             </NavItem>   
                         </Nav>                
                     </Collapse>
