@@ -19,20 +19,20 @@ class App extends Component {
       <Router>
         <Fragment>
           <LoadingBar/>  
-            <Switch>                  
-              {this.props.loading === true
-                ? <Fragment>
-                    <div className="container"> 
-                      <Route path='/' exact component={LandingPage}/>
-                    </div>
-                  </Fragment>
-                : <Fragment>
-                    <Toolbar />  
-                    <Dashboard />
-                  </Fragment>                        
-              }
-              <Route component={PageNotFound}/>
-             </Switch>           
+          <Toolbar />  
+            <div className="container"> 
+              <Switch>                  
+                {this.props.loading === true
+                  ? <Fragment>                    
+                        <Route path='/' exact component={LandingPage}/>                      
+                    </Fragment>
+                  : <Fragment>                      
+                      <Dashboard />
+                    </Fragment>                        
+                }
+                <Route component={PageNotFound}/>
+              </Switch>           
+             </div>
         </Fragment>
       </Router>
     );
