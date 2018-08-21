@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import  { handleSaveQuestion }  from '../actions/shared'
 import { Button, Label, Input, Form, FormGroup, Card, CardHeader, CardBody, CardTitle, CardSubtitle } from 'reactstrap'
+import { Redirect } from 'react-router-dom'
 
 class NewPoll extends Component {
   state = {
     optionOneText: '',
-    optionTwoText: ''
+    optionTwoText: '',
+    toHome: false
   }
 
   handleChange = (e, option) => {    
@@ -35,12 +37,17 @@ class NewPoll extends Component {
 
     this.setState({
       optionOneText : '',
-      optionTwoText : ''
+      optionTwoText : '',
+      toHome: true  
     })
   }
 
   render() {
-    const { optionOneText, optionTwoText } = this.state
+    const { optionOneText, optionTwoText, toHome } = this.state
+
+    if(toHome === true){
+      return <Redirect to='/' />
+    }
 
     return (
 
