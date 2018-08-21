@@ -1,11 +1,12 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import LoadingBar from 'react-redux-loading'
 import { handleInitialData } from '../actions/shared'
 import Dashboard from './Dashboard'
 import Toolbar from './Toolbar'
 import LandingPage from './LandingPage'
+import PageNotFound from './PageNotFound'
 
 class App extends Component {
 
@@ -17,7 +18,8 @@ class App extends Component {
     return (
       <Router>
         <Fragment>
-          <LoadingBar/>                    
+          <LoadingBar/>  
+            <Switch>                  
               {this.props.loading === true
                 ? <Fragment>
                     <div className="container"> 
@@ -28,7 +30,9 @@ class App extends Component {
                     <Toolbar />  
                     <Dashboard />
                   </Fragment>                        
-              }          
+              }
+              <Route component={PageNotFound}/>
+             </Switch>           
         </Fragment>
       </Router>
     );
