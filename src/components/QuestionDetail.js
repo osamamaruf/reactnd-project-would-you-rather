@@ -2,11 +2,17 @@ import React from 'react';
 import { connect } from 'react-redux'
 import UnAnsweredPoll from './UnAnsweredPoll'
 import AnsweredPoll from './AnsweredPoll'
+import PageNotFound from './PageNotFound'
 import { formatQuestion } from '../utils/helpers'
 import { Card, CardHeader, CardBody, Media } from 'reactstrap'
 import { formatDate } from '../utils/helpers'
 
 function QuestionDetail (props) {
+  
+  if(props.question === null){
+    return <PageNotFound />
+  }
+
   const { question } = props
   const { name, timestamp, avatar, hasAnswered } = question
   return(         
@@ -41,7 +47,9 @@ function mapStateToProps({authedUser, users, questions}, ownProps) {
   const question = questions[ownProps.match.params.question_id]
   return {
     authedUser,
-    question : formatQuestion(question, users[question.author], authedUser)
+    question : question ? 
+              formatQuestion(question, users[question.author], authedUser):
+              null
   }
 }
 
